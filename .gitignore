@@ -1,0 +1,72 @@
+# Ignore Visual Studio temporary files and folders
+.vs/
+*.suo
+*.user
+*.userosscache
+*.ncb
+*.sdf
+*.cache
+*.log
+
+# Ignore build output folders
+bin/
+obj/
+publish/
+apphost.exe
+
+# Ignore NuGet packages and related files
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+.nuget/
+nuget.config
+project.nuget.cache
+project.assets.json
+project.csproj.nuget.dgspec.json
+
+# Ignore MSBuild files
+*.csproj.user
+*.csproj.CoreCompileInputs.cache
+*.csproj.FileListAbsolute.txt
+*.csproj.nuget.dgspec.json
+
+# Ignore MSBuild EditorConfig files
+*.GeneratedMSBuildEditorConfig.editorconfig
+
+# Ignore generated files by WPF
+*.g.cs
+*.g.i.cs
+*.i.cache
+*.lref
+*_MarkupCompile.cache
+*_MarkupCompile.i.cache
+*_MarkupCompile.lref
+
+# Ignore PDB (Program Database) files
+*.pdb
+
+# Ignore DLL (Dynamic Link Library) files
+*.dll
+
+# Ignore EXE (Executable) files
+*.exe
+
+# Ignore Rider and IDE-specific files
+.idea/
+
+# Ignore Xamarin-specific files
+.xamarin/
+*.xib
+*.storyboard
+
+# Ignore security-related files
+*.key
+*.cert
+*.pfx
+
+# Additional Visual Studio generated files
+*.idb
+*.suo
+*.sdf
+*.log
