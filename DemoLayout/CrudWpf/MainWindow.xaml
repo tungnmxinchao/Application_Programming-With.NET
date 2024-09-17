@@ -24,10 +24,10 @@
         </DataGrid>
         <StackPanel Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal" >
-                <ComboBox x:Name="cbxDepartFilter"  Width="150" ></ComboBox>
-                <Button x:Name="btnFilter" Content="Filter" Click="btnFilter_Click">
+                <ComboBox x:Name="cbxDepartFilter"  Width="150"  SelectionChanged="cbxDepartFilter_SelectionChanged" ></ComboBox>
+                <!--<Button x:Name="btnFilter" Content="Filter" Click="btnFilter_Click">
 
-                </Button>
+                </Button>-->
 
             </StackPanel>
             <!-- Search Section -->
@@ -57,7 +57,7 @@
                 <!-- Department Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Department:" Width="80" VerticalAlignment="Center" />
-                    <ComboBox x:Name="cbxDepart" Width="200" />
+                    <ComboBox x:Name="cbxDepart" Width="150" />
                 </WrapPanel>
 
                 <!-- Dob Section -->

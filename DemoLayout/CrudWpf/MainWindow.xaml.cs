@@ -55,13 +55,13 @@ namespace CrudWpf
             cbxDepartFilter.SelectedIndex = 0;
         }
 
-        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        private void FilterStudents()
         {
             string dept = cbxDepartFilter.SelectedValue.ToString();
             string deptId = prn221Context.Ins.Departments.FirstOrDefault(x => x.Name.Equals(dept)).Id;
 
             var st = prn221Context.Ins.Students
-                .Include(x => x.Depart) 
+                .Include(x => x.Depart)
                 .Where(x => x.DepartId == deptId)
                 .Select(x => new
                 {
@@ -85,6 +85,11 @@ namespace CrudWpf
                 dgvDisplay.ItemsSource = prn221Context.Ins.Students.Include(x => x.Depart).
                     Where(X => string.IsNullOrEmpty(txt) ? true : X.Name.Contains(txt)).ToList();
             }
+        }
+
+        private void cbxDepartFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterStudents();
         }
     }
 }
