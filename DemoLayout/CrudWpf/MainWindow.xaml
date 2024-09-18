@@ -12,13 +12,13 @@
             <ColumnDefinition Width="*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="dgvDisplay"  Grid.Column="0" Grid.Row="0" AutoGenerateColumns="False" CanUserAddRows="False" >
+        <DataGrid x:Name="dgvDisplay"  Grid.Column="0" Grid.Row="0" AutoGenerateColumns="False" CanUserAddRows="False" SelectedCellsChanged="dgvDisplay_SelectedCellsChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="MSSV" Width="auto" Binding="{Binding Id}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="FullName" Width="auto" Binding="{Binding Name}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Gender" Width="auto" Binding="{Binding Gender}" ></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Gender" Width="auto" Binding="{Binding Gender}" ></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Dob" Width="auto" Binding="{Binding Dob}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Department" Width="auto" Binding="{Binding Department.Name}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Department" Width="auto" Binding="{Binding Depart.Name}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Gpa" Width="auto" Binding="{Binding Gpa}" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
@@ -44,7 +44,13 @@
                 <!-- ID Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="ID:" Width="50" VerticalAlignment="Center" />
-                    <TextBox x:Name="textName" Width="200" />
+                    <TextBox x:Name="txtId" Width="200" Text="{Binding ElementName=dgvDisplay, Path=SelectedItem.Id, Mode=OneWay}"/>
+                </WrapPanel>
+
+                <!-- Name Section -->
+                <WrapPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Name:" Width="50" VerticalAlignment="Center" />
+                    <TextBox x:Name="txtName" Width="200" Text="{Binding ElementName=dgvDisplay, Path=SelectedItem.Name, Mode=OneWay}"/>
                 </WrapPanel>
 
                 <!-- Gender Section -->
@@ -57,19 +63,19 @@
                 <!-- Department Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Department:" Width="80" VerticalAlignment="Center" />
-                    <ComboBox x:Name="cbxDepart" Width="150" />
+                    <ComboBox x:Name="cbxDepart" Width="150" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart, Mode=OneWay}" DisplayMemberPath="Name" />
                 </WrapPanel>
 
                 <!-- Dob Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Dob:" Width="50" VerticalAlignment="Center" />
-                    <DatePicker x:Name="dpkDob" Width="200" />
+                    <DatePicker x:Name="dpkDob" Width="200" SelectedDate="{Binding ElementName=dgvDisplay, Path=SelectedItem.Dob, Mode=TwoWay}" />
                 </WrapPanel>
 
                 <!-- Gpa Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Gpa:" Width="50" VerticalAlignment="Center" />
-                    <TextBox x:Name="txtGpa" Width="200" />
+                    <TextBox x:Name="txtGpa" Width="200" Text="{Binding ElementName=dgvDisplay, Path=SelectedItem.Gpa, Mode=OneWay}"/>
                 </WrapPanel>
 
                 <!-- Action Buttons -->
@@ -79,9 +85,9 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Name="btnInsert" Content="Insert" Grid.Column="0" />
-                    <Button Name="btnUpdate" Content="Update" Grid.Column="1" />
-                    <Button Name="btnDelete" Content="Delete" Grid.Column="2" />
+                    <Button Name="btnInsert" Content="Insert" Grid.Column="0" Click="btnInsert_Click" />
+                    <Button Name="btnUpdate" Content="Update" Grid.Column="1" Click="btnUpdate_Click" />
+                    <Button Name="btnDelete" Content="Delete" Grid.Column="2" Click="btnDelete_Click" />
                 </Grid>
             </StackPanel>
 
