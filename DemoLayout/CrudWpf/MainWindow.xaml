@@ -63,7 +63,7 @@
                 <!-- Department Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Department:" Width="80" VerticalAlignment="Center" />
-                    <ComboBox x:Name="cbxDepart" Width="150" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart, Mode=OneWay}" DisplayMemberPath="Name" />
+                    <ComboBox x:Name="cbxDepart" Width="150" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart.Name, Mode=OneWay}" />
                 </WrapPanel>
 
                 <!-- Dob Section -->
