@@ -48,7 +48,9 @@ namespace CrudWpf
                 //})
                 .ToList();
 
-            dgvDisplay.ItemsSource = student;  
+            dgvDisplay.ItemsSource = student;
+
+            //lvDisplay.ItemsSource = student;
         }
         string[] elements = { "Id", "Name", "Gender", "DepartName", "Dob", "Gpa" };
 
