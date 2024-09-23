@@ -25,6 +25,27 @@
                 <DataGridTextColumn Header="Gpa" Width="auto" Binding="{Binding Gpa}" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--<ListView x:Name="lvDisplay" Grid.Column="0" Grid.Row="0" SelectionChanged="lvDisplay_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="MSSV" Width="Auto" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="FullName" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Gender" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Gender}" IsEnabled="False" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Dob" Width="Auto" DisplayMemberBinding="{Binding Dob}" />
+                    <GridViewColumn Header="Department" Width="Auto" DisplayMemberBinding="{Binding Depart.Name}" />
+                    <GridViewColumn Header="Gpa" Width="Auto" DisplayMemberBinding="{Binding Gpa}" />
+                </GridView>
+            </ListView.View>
+        </ListView>-->
+
+
         <StackPanel Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal" >
                 <ComboBox x:Name="cbxDepartFilter"  Width="150"  SelectionChanged="cbxDepartFilter_SelectionChanged" ></ComboBox>
