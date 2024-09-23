@@ -17,9 +17,9 @@
                 <DataGridTextColumn Header="MSSV" Width="auto" Binding="{Binding Id}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="FullName" Width="auto" Binding="{Binding Name}" ></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header="Gender" Width="auto" Binding="{Binding Gender}" ></DataGridCheckBoxColumn>
-                <!--<DataGridTextColumn Header="Dob" Width="auto" Binding="{Binding Dob}" ></DataGridTextColumn>-->
+                <DataGridTextColumn Header="Dob" Width="auto" Binding="{Binding Dob}" ></DataGridTextColumn>
 
-                <DataGridTextColumn Header="Dob" Width="auto" Binding="{Binding Dob, StringFormat={}{0:dd/MM/yyyy}}" />
+                <!--<DataGridTextColumn Header="Dob" Width="auto" Binding="{Binding Dob, StringFormat={}{0:dd/MM/yyyy}}" />-->
                 
                 <DataGridTextColumn Header="Department" Width="auto" Binding="{Binding Depart.Name}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Gpa" Width="auto" Binding="{Binding Gpa}" ></DataGridTextColumn>
@@ -31,7 +31,7 @@
                 <!--<Button x:Name="btnFilter" Content="Filter" Click="btnFilter_Click">
 
                 </Button>-->
-
+                <ComboBox x:Name="cbxMaleFilter"  Width="150"  SelectionChanged="cbxMaleFilter_SelectionChanged" ></ComboBox>
             </StackPanel>
             <!-- Search Section -->
             <WrapPanel Orientation="Horizontal" Margin="0,5">
@@ -41,6 +41,8 @@
             Content="Search"
             Click="btnSearch_Click" />
             </WrapPanel>
+            
+            
 
             <!-- Details Section -->
             <StackPanel Orientation="Vertical" Margin="0,20,0,0">

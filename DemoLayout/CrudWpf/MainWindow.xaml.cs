@@ -26,6 +26,10 @@ namespace CrudWpf
             load();
             loadDepart();
             cbxSearchIn.ItemsSource = elements;
+
+        
+            cbxMaleFilter.ItemsSource = new List<string> { "All", "Male", "Female" };
+            cbxMaleFilter.SelectedIndex = 0; 
         }
 
         private void load()
@@ -60,24 +64,29 @@ namespace CrudWpf
 
         private void FilterStudents()
         {
-            string dept = cbxDepartFilter.SelectedValue.ToString();
-            string deptId = prn221Context.Ins.Departments.FirstOrDefault(x => x.Name.Equals(dept)).Id;
+            string selectedDept = cbxDepartFilter.SelectedItem?.ToString();
+            string deptId = prn221Context.Ins.Departments.FirstOrDefault(x => x.Name.Equals(selectedDept))?.Id;
 
-            var st = prn221Context.Ins.Students
-                .Include(x => x.Depart)
-                .Where(x => x.DepartId == deptId).ToList();
-                //.Select(x => new
-                //{
-                //    Id = x.Id,
-                //    Name = x.Name,
-                //    Gender = x.Gender ? "Male" : "Female",
-                //    Dob = x.Dob,
-                //    Gpa = x.Gpa,
-                //    Department = x.Depart
-                //})
-                //.ToList();
+            string selectedGender = cbxMaleFilter.SelectedItem?.ToString();
 
-            dgvDisplay.ItemsSource = st;
+            var query = prn221Context.Ins.Students.Include(x => x.Depart).AsQueryable();
+
+            if (!string.IsNullOrEmpty(deptId))
+            {
+                query = query.Where(x => x.DepartId == deptId);
+            }
+
+            if (selectedGender == "Male")
+            {
+                query = query.Where(x => x.Gender == true);
+            }
+            else if (selectedGender == "Female")
+            {
+                query = query.Where(x => x.Gender == false);
+            }
+
+            var filteredStudents = query.ToList();
+            dgvDisplay.ItemsSource = filteredStudents;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -231,6 +240,11 @@ namespace CrudWpf
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void cbxMaleFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterStudents();
         }
     }
 }
