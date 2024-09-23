@@ -212,19 +212,24 @@ namespace CrudWpf
         {
             try
             {
-                var x = prn221Context.Ins.Students.Find(int.Parse(txtId.Text));
+ 
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this student?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                if(x != null)
+                if (result == MessageBoxResult.Yes)
                 {
-                    prn221Context.Ins.Students.Remove(x);
-                    prn221Context.Ins.SaveChanges();
-                    load();
+                    var student = prn221Context.Ins.Students.Find(int.Parse(txtId.Text));
 
+                    if (student != null)
+                    {
+                        prn221Context.Ins.Students.Remove(student);
+                        prn221Context.Ins.SaveChanges();
+                        load(); 
+                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return;
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

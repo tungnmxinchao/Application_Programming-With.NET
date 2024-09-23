@@ -60,10 +60,32 @@
                     <RadioButton x:Name="rdbFemale" Content="Female" VerticalAlignment="Center" />
                 </WrapPanel>
 
+                <!-- Gender Section (Changed to CheckBox) -->
+                <WrapPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Gender:" Width="50" VerticalAlignment="Center" />
+                    <CheckBox x:Name="chkGender" Content="Male" IsChecked="{Binding ElementName=dgvDisplay, Path=SelectedItem.Gender, Mode=TwoWay}" />
+                </WrapPanel>
+
+                <!-- Gender Section (Chaned to ComboBox)-->
+                <WrapPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Gender:" Width="50" VerticalAlignment="Center" />
+                    <ComboBox x:Name="cmbGender" Width="100" VerticalAlignment="Center"
+                                ItemsSource="{Binding GenderOptions}" 
+                                SelectedItem="{Binding SelectedStudent.Gender, Mode=TwoWay}">
+                        <!-- Define ComboBox options in the DataContext (ViewModel or Code-behind) -->
+                    </ComboBox>
+                </WrapPanel>
+
                 <!-- Department Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Department:" Width="80" VerticalAlignment="Center" />
                     <ComboBox x:Name="cbxDepart" Width="150" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart.Name, Mode=OneWay}" />
+                </WrapPanel>
+
+                <!-- Department Section -->
+                <WrapPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Department:" Width="80" VerticalAlignment="Center" />
+                    <CheckBox Content="Trí tuệ nhân tạo" IsChecked="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart.Name, Mode=TwoWay}" Margin="5,0"/>
                 </WrapPanel>
 
                 <!-- Dob Section -->
