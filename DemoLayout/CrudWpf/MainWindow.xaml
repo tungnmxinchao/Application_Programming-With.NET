@@ -56,14 +56,21 @@
                 <!-- Gender Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Gender:" Width="50" VerticalAlignment="Center" />
-                    <RadioButton x:Name="rdbMale" Content="Male" VerticalAlignment="Center" />
-                    <RadioButton x:Name="rdbFemale" Content="Female" VerticalAlignment="Center" />
+                    <RadioButton x:Name="rdbMale" Content="Male" VerticalAlignment="Center" IsChecked="{Binding ElementName=dgvDisplay, Path=SelectedItem.Gender, Mode=OneWay}"/>
+                    <RadioButton x:Name="rdbFemale" Content="Female" VerticalAlignment="Center"/>
                 </WrapPanel>
 
                 <!-- Department Section -->
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Department:" Width="80" VerticalAlignment="Center" />
                     <ComboBox x:Name="cbxDepart" Width="150" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Depart.Name, Mode=OneWay}" />
+                </WrapPanel>
+
+                <WrapPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Department:" Width="Auto" />
+                    <StackPanel x:Name="spnDept" Orientation="Vertical" Tag="SE">
+                        
+                    </StackPanel>
                 </WrapPanel>
 
                 <!-- Dob Section -->

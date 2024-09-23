@@ -26,6 +26,29 @@ namespace CrudWpf
             load();
             loadDepart();
             cbxSearchIn.ItemsSource = elements;
+            loadDeptRadio();
+        }
+
+        private void loadDeptRadio(string id = "SE")
+        {
+            spnDept.Children.Clear();
+            foreach (var d in prn221Context.Ins.Departments)
+            {
+                RadioButton rd = new RadioButton
+                {
+                    Content = d.Name,
+                    Name = d.Id,
+                    IsChecked = d.Id.Equals(id)
+                };
+                rd.Click += Rd_Click;
+                spnDept.Children.Add(rd); 
+            }
+        }
+
+        private void Rd_Click(Object sender, RoutedEventArgs e)
+        {
+            RadioButton rd = sender as RadioButton;
+            spnDept.Tag = rd.Name;
         }
 
         private void load()
@@ -130,9 +153,12 @@ namespace CrudWpf
                 int id = int.Parse(txtId.Text);
                 string name = txtName.Text;
                 bool gender = rdbMale.IsChecked == true;
-                string deptId = prn221Context.Ins.Departments.FirstOrDefault(
-                    x => x.Name.Equals(cbxDepart.SelectedValue.ToString())).Id;
+                //string deptId = prn221Context.Ins.Departments.FirstOrDefault(
+                //    x => x.Name.Equals(cbxDepart.SelectedValue.ToString())).Id;
+                //DateTime? dob = dpkDob.SelectedDate.Value;
+                string deptId = spnDept.Tag.ToString();
                 DateTime? dob = dpkDob.SelectedDate.Value;
+
                 float gpa = float.Parse(txtGpa.Text);
 
                 return new Student()
@@ -164,6 +190,12 @@ namespace CrudWpf
             //    dpkDob.SelectedDate = st.Dob;
             //    txtGpa.Text = st.Gpa.ToString();
             //}
+
+            Student st = dgvDisplay.SelectedItem as Student;
+            if(st != null)
+            {
+                loadDeptRadio(st.DepartId);
+            }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
