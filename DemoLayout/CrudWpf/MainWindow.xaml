@@ -57,7 +57,7 @@
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Gender:" Width="50" VerticalAlignment="Center" />
                     <RadioButton x:Name="rdbMale" Content="Male" VerticalAlignment="Center" IsChecked="{Binding ElementName=dgvDisplay, Path=SelectedItem.Gender, Mode=OneWay}"/>
-                    <RadioButton x:Name="rdbFemale" Content="Female" VerticalAlignment="Center"/>
+                    <RadioButton x:Name="rdbFemale" Content="Female" VerticalAlignment="Center" IsChecked="{Binding ElementName=dgvDisplay, Path=SelectedItem.Female, Mode=OneWay}"/>
                 </WrapPanel>
 
                 <!-- Department Section -->
