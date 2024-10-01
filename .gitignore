@@ -70,3 +70,23 @@ project.csproj.nuget.dgspec.json
 *.suo
 *.sdf
 *.log
+
+# Razor-specific files
+*.cshtml
+*.cshtml.cs
+
+# Razor Page generated output
+obj/**/*.g.cshtml.cs
+obj/**/*.g.cs
+
+# Razor temporary files
+obj/**/*.cshtml.*
+
+# Temporary Razor compilation files
+obj/**/*.RazorTarget.*
+obj/**/*.RazorAssemblyInfo.*
+
+# Additional Razor tooling files
+.vscode/
+.vs/
+.idea/
