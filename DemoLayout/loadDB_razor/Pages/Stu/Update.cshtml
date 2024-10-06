@@ -1,0 +1,42 @@
+﻿@page
+@model loadDB_razor.Pages.Stu.UpdateModel
+@{
+}
+
+<h1>Hello anh tung</h1>
+<form method="post">
+	<label>ID</label>
+	<input type="text" asp-for="@Model.std.Id" name="Id" />
+
+	<br />
+
+	<label>Name</label>
+	<input type="text" asp-for="@Model.std.Name" name="Name" />
+
+	<br />
+
+	<label>Gender</label>
+	<input type="checkbox" asp-for="@Model.std.Gender" name="Gender" />
+	<span> Male</span>
+
+	<br />
+
+	<label>Department</label>
+	<select asp-for="@Model.std.DepartId" name="DepartId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))">
+		<option value="">Select a department</option>
+	</select>
+
+	<br />
+
+	<label>Dob</label>
+	<input type="date" asp-for="@Model.std.Dob" name="Dob" />
+
+	<br />
+
+	<label>Gpa</label>
+	<input type="text" asp-for="@Model.std.Gpa" name="Gpa" />
+
+	<br />
+
+	<input type="submit" value="Update"/>
+</form>

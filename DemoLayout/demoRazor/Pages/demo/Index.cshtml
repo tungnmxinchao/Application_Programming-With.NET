@@ -1,0 +1,29 @@
+﻿@page
+@model demoRazor.Pages.demo.ViewModel
+@{
+}
+<h1 style="color: red" >Welcom to Demo page</h1>
+@* <h2>Hello @ViewBag.name</h2>
+<h2>Hello @ViewData["name"] hehe</h2> *@
+<h2>Hello @Model.NameView hehe</h2>
+<H2> ID : @Model.Id</H2>
+@* <H2> Age : @Model.Age</H2> *@
+<br />
+@* <form method="post" >
+	<label>ID</label>
+	<input type="text" name="id" /> <br />
+	<label>Name</label>
+	<input type="text" name="name" /> <br />
+	<input type="submit" value="SEND" />
+</form> *@
+
+<form  asp-page="View" method="post">
+	<label>ID</label>
+	<input type="text" asp-for="@Model.Id" /> <br />
+	<label>Name</label>
+	<input type="text" asp-for="@Model.NameView" /> <br />
+	<input type="submit" value="SEND" />
+	<label>Age</label>
+@* 	<input type="text" asp-for="@Model.Age" /> <br /> *@
+	
+</form>

@@ -1,0 +1,93 @@
+﻿@page
+@model loadDB_razor.Pages.Stu.ViewModel
+@{
+}
+<h1>Wellcom to daica tung</h1>
+
+<div>
+    <a href="Add" >Add</a>
+</div>
+
+<table >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Dob</th>
+            <th>Gpa</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.std)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                @* <td><input type="checkbox" disabled="disabled" @(student.Gender ? "checked" : "") /></td>  *@
+
+                @* <td>
+                    <select>
+                        <option value="true" selected="@student.Gender">Male</option>
+                        <option value="false" selected="@(!student.Gender)">Female</option>
+                    </select>
+                </td> *@
+
+                <td>
+                    <label>
+                        <input type="radio" name="gender_@student.Id" value="true" @(student.Gender ? "checked" : "") disabled="disabled" />
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender_@student.Id" value="false" @(!student.Gender ? "checked" : "") disabled="disabled" />
+                        Female
+                    </label>
+                </td>
+
+                @* <td>@student.Depart.Name</td>  *@
+
+                <!-- Checkbox for department selection -->
+                @* <td>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <label>
+                            <input type="checkbox" name="department_@student.Id" value="@department.Id" @(student.DepartId == department.Id ? "checked" : "") disabled="disabled" />
+                            @department.Name
+                        </label>
+                    }
+                </td> *@
+
+                <!-- Radio buttons for department selection -->
+               @*  <td>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <label>
+                            <input type="radio" name="department_@student.Id" value="@department.Id" @(student.DepartId == department.Id ? "checked" : "") disabled="disabled" />
+                            @department.Name
+                        </label>
+                    }
+                </td> *@
+
+                <!-- Select dropdown for department selection -->
+                <td>
+                    <select>
+                        @foreach (var department in Model.Departments)
+                        {
+                            <option value="@department.Id" selected="@(student.DepartId == department.Id)">
+                                @department.Name
+                            </option>
+                        }
+                    </select>
+                </td>
+
+                <td>@student.Dob</td>
+                <td>@student.Gpa</td>
+                <td>
+                    <a asa asp-page="/Stu/Update" asp-route-id="@student.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

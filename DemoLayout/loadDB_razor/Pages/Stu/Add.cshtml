@@ -1,0 +1,48 @@
+﻿@page
+@model loadDB_razor.Pages.Stu.AddModel
+@{
+}
+<h1>Add Page</h1>
+@* <form method="post" >
+	<input type="submit"  class="btn btn-primary" />
+</form> *@
+
+<form method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<div>
+		<label for="Id">Student ID:</label>
+		<input type="number" id="Id" name="NewStudent.Id" required />
+	</div>
+	<div>
+		<label for="Name">Name:</label>
+		<input type="text" id="Name" name="NewStudent.Name" required />
+	</div>
+	<div>
+		<label for="Gender">Gender:</label>
+		<label>
+			<input type="radio" name="NewStudent.Gender" value="true" required /> Male
+		</label>
+		<label>
+			<input type="radio" name="NewStudent.Gender" value="false" required /> Female
+		</label>
+	</div>
+	<div>
+		<label for="DepartId">Department:</label>
+		<select id="DepartId" name="NewStudent.DepartId" required>
+			<option value="">Select Department</option>
+			@foreach (var department in Model.Departments)
+			{
+				<option value="@department.Id">@department.Name</option>
+			}
+		</select>
+	</div>
+	<div>
+		<label for="Dob">Date of Birth:</label>
+		<input type="date" id="Dob" name="NewStudent.Dob" required />
+	</div>
+	<div>
+		<label for="Gpa">GPA:</label>
+		<input type="number" step="0.01" id="Gpa" name="NewStudent.Gpa" required />
+	</div>
+	<button type="submit">Add Student</button>
+</form>

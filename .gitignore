@@ -72,8 +72,6 @@ project.csproj.nuget.dgspec.json
 *.log
 
 # Razor-specific files
-*.cshtml
-*.cshtml.cs
 
 # Razor Page generated output
 obj/**/*.g.cshtml.cs
