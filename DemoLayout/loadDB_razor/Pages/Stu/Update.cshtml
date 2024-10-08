@@ -6,12 +6,12 @@
 <h1>Hello anh tung</h1>
 <form method="post">
 	<label>ID</label>
-	<input type="text" asp-for="@Model.std.Id" name="Id" />
+	<input type="text" asp-for="@Model.std.Id"  />
 
 	<br />
 
 	<label>Name</label>
-	<input type="text" asp-for="@Model.std.Name" name="Name" />
+	<input type="text" asp-for="@Model.std.Name"  />
 
 	<br />
 
@@ -19,24 +19,55 @@
 	<input type="checkbox" asp-for="@Model.std.Gender" name="Gender" />
 	<span> Male</span>
 
+	@* 	<div>
+		<input type="radio" asp-for="@Model.std.Gender"  value="true" /> Male
+		<input type="radio" asp-for="@Model.std.Gender"  value="false" /> Female
+	</div> *@
+
+	@* <div>
+		<select asp-for="@Model.std.Gender" class="form-control">
+			<option value="true">Male</option>
+			<option value="false">Female</option>
+		</select>
+	</div> *@
+	
+
 	<br />
 
 	<label>Department</label>
 	<select asp-for="@Model.std.DepartId" name="DepartId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))">
-		<option value="">Select a department</option>
+	<option value="">Select a department</option>
 	</select>
+
+	@* @foreach (var department in Model.Departments)
+	{
+		<div>
+			<input type="checkbox" name="SelectedDepartments" value="@department.Id"
+			@(Model.SelectedDepartments.Contains(department.Id) ? "checked" : "") />
+			<label>@department.Name</label>
+		</div>
+	} *@
+
+@* 	@foreach (var department in Model.Departments)
+	{
+		<div>
+			<input type="radio" name="std.DepartId" value="@department.Id"
+			@(Model.std.DepartId == department.Id ? "checked" : "") />
+			<label>@department.Name</label>
+		</div>
+	} *@
 
 	<br />
 
 	<label>Dob</label>
-	<input type="date" asp-for="@Model.std.Dob" name="Dob" />
+	<input type="date" asp-for="@Model.std.Dob"  />
 
 	<br />
 
 	<label>Gpa</label>
-	<input type="text" asp-for="@Model.std.Gpa" name="Gpa" />
+	<input type="text" asp-for="@Model.std.Gpa"  />
 
 	<br />
 
-	<input type="submit" value="Update"/>
+	<input type="submit" value="Update" />
 </form>

@@ -3,46 +3,73 @@
 @{
 }
 <h1>Add Page</h1>
-@* <form method="post" >
-	<input type="submit"  class="btn btn-primary" />
-</form> *@
 
 <form method="post">
-	<div asp-validation-summary="All" class="text-danger"></div>
-	<div>
-		<label for="Id">Student ID:</label>
-		<input type="number" id="Id" name="NewStudent.Id" required />
-	</div>
-	<div>
-		<label for="Name">Name:</label>
-		<input type="text" id="Name" name="NewStudent.Name" required />
-	</div>
-	<div>
-		<label for="Gender">Gender:</label>
-		<label>
-			<input type="radio" name="NewStudent.Gender" value="true" required /> Male
-		</label>
-		<label>
-			<input type="radio" name="NewStudent.Gender" value="false" required /> Female
-		</label>
-	</div>
-	<div>
-		<label for="DepartId">Department:</label>
-		<select id="DepartId" name="NewStudent.DepartId" required>
-			<option value="">Select Department</option>
-			@foreach (var department in Model.Departments)
-			{
-				<option value="@department.Id">@department.Name</option>
-			}
-		</select>
-	</div>
-	<div>
-		<label for="Dob">Date of Birth:</label>
-		<input type="date" id="Dob" name="NewStudent.Dob" required />
-	</div>
-	<div>
-		<label for="Gpa">GPA:</label>
-		<input type="number" step="0.01" id="Gpa" name="NewStudent.Gpa" required />
-	</div>
-	<button type="submit">Add Student</button>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <label asp-for="NewStudent.Id"></label>
+        <input asp-for="NewStudent.Id" type="number" required />
+    </div>
+    <div>
+        <label asp-for="NewStudent.Name"></label>
+        <input asp-for="NewStudent.Name" type="text" required />
+    </div>
+@*     <div>
+        <label>Gender:</label>
+        <label>
+            <input asp-for="NewStudent.Gender" type="radio" value="true" required /> Male
+        </label>
+        <label>
+            <input asp-for="NewStudent.Gender" type="radio" value="false" required /> Female
+        </label>
+    </div> *@
+
+    @* <div>
+        <label asp-for="NewStudent.Gender"></label>
+        <input asp-for="NewStudent.Gender" type="checkbox" /> Male
+    </div> *@
+
+    <div>
+        <label asp-for="NewStudent.Gender"></label>
+        <select asp-for="NewStudent.Gender" required>
+            <option value="">Select Gender</option>
+            <option value="true">Male</option>
+            <option value="false">Female</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="NewStudent.DepartId"></label>
+        <select asp-for="NewStudent.DepartId" required>
+            <option value="">Select Department</option>
+            @foreach (var department in Model.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+        </select>
+    </div>
+
+    @* <div>
+        <label>Department:</label>
+        @foreach (var department in Model.Departments)
+        {
+            <label>
+                <input asp-for="NewStudent.DepartId" type="radio" value="@department.Id" required /> @department.Name
+            </label>
+
+            <br />
+        }
+    </div> *@
+
+
+    <div>
+        <label asp-for="NewStudent.Dob"></label>
+        <input asp-for="NewStudent.Dob" type="date" required />
+    </div>
+    <div>
+        <label asp-for="NewStudent.Gpa"></label>
+        <input asp-for="NewStudent.Gpa" type="number" step="0.01" required />
+    </div>
+    <button type="submit">Add Student</button>
 </form>

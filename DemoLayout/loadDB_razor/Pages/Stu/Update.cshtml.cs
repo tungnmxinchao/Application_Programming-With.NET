@@ -11,7 +11,29 @@ namespace loadDB_razor.Pages.Stu
 	{
 		[BindProperty]
 		public Student std { get; set; }
+
 		public List<Department> Departments = new List<Department>();
+
+		[BindProperty]
+		public List<string> SelectedDepartments { get; set; } = new List<string>();
+
+
+		//public void OnGet(string id)
+		//{
+		//	try
+		//	{
+		//		int Id = int.Parse(id);
+		//		std = prn221Context.Ins.Students.Find(Id);
+		//		Departments = prn221Context.Ins.Departments.ToList();
+
+		//	}
+		//	catch (Exception ex)
+		//	{
+
+		//	}
+
+
+		//}
 
 		public void OnGet(string id)
 		{
@@ -21,13 +43,15 @@ namespace loadDB_razor.Pages.Stu
 				std = prn221Context.Ins.Students.Find(Id);
 				Departments = prn221Context.Ins.Departments.ToList();
 
+				if (!string.IsNullOrEmpty(std.DepartId))
+				{
+					SelectedDepartments = std.DepartId.Split(',').ToList();
+				}
 			}
 			catch (Exception ex)
 			{
-
+				
 			}
-
-
 		}
 
 		public IActionResult OnPost()
