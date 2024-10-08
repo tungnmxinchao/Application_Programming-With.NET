@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using loadDB_razor.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace loadDB_razor.Pages.StdNew
 {
@@ -20,6 +21,13 @@ namespace loadDB_razor.Pages.StdNew
 
         public IList<Student> Student { get;set; } = default!;
 
+        //public SelectList Departments { get; set; } = default!;
+
+
+        // su dung khi thay depart thanh radiobutton, checkbox
+        public IList<Department> Departments { get; set; } = new List<Department>();
+
+
         public async Task OnGetAsync()
         {
             if (_context.Students != null)
@@ -27,6 +35,11 @@ namespace loadDB_razor.Pages.StdNew
                 Student = await _context.Students
                 .Include(s => s.Depart).ToListAsync();
             }
+
+            //Departments = new SelectList(_context.Departments, "Id", "Name");
+
+            // su dung khi thay depart thanh radiobutton, checkbox
+            Departments = await _context.Departments.ToListAsync();
         }
     }
 }

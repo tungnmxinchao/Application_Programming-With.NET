@@ -47,6 +47,24 @@
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Gender)
+
+
+
+					@* <label>
+						<input type="radio" name="gender_@item.Id" value="Male" @(item.Gender ? "checked" : "") disabled="disabled" />
+						Male
+					</label>
+					<label>
+						<input type="radio" name="gender_@item.Id" value="Female" @(!item.Gender ? "checked" : "") disabled="disabled" />
+						Female
+					</label> *@
+
+
+					@* <select asp-for="@item.Gender" disabled="disabled">
+						<option value="true">Male</option>
+						<option value="false">Female</option>
+					</select> *@
+
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Dob)
@@ -56,6 +74,35 @@
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Depart.Id)
+
+					@* <select asp-for="@item.DepartId" class="form-control" asp-items="Model.Departments">
+						<option value="">Select Department</option>
+					</select> *@
+
+
+					@* @foreach (var department in Model.Departments)
+					{
+						<label>
+							<input type="radio" name="depart_@item.Id" value="@department.Id"
+							@(item.DepartId == department.Id ? "checked" : "") disabled="disabled" />
+							@department.Name
+						</label>
+					} *@
+
+					@* Checkboxes for department selection *@
+					@foreach (var department in Model.Departments)
+					{
+						<label>
+							<input type="checkbox" name="departments_@item.Id"
+								   value="@department.Id"
+							@(item.DepartId == department.Id ? "checked" : "")
+								   disabled="disabled" />
+							@department.Name
+						</label>
+						<br />
+					}
+
+
 				</td>
 				<td>
 					<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

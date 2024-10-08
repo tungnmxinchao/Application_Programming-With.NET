@@ -20,8 +20,21 @@ namespace loadDB_razor.Pages.StdNew
 
         public IActionResult OnGet()
         {
-        ViewData["DepartId"] = new SelectList(_context.Departments, "Id", "Id");
+            ViewData["DepartId"] = new SelectList(_context.Departments, "Id", "Name");
             return Page();
+
+
+            //// dung khi thay doi depart sang radiobutton
+            //var departments = _context.Departments.ToList();
+
+
+            //ViewData["DepartId"] = departments.Select(d => new SelectListItem
+            //{
+            //    Value = d.Id.ToString(), 
+            //    Text = d.Name
+            //}).ToList();
+
+            //return Page();
         }
 
         [BindProperty]
