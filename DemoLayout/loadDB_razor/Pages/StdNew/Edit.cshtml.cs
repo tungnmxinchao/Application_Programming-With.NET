@@ -35,7 +35,7 @@ namespace loadDB_razor.Pages.StdNew
                 return NotFound();
             }
             Student = student;
-           ViewData["DepartId"] = new SelectList(_context.Departments, "Id", "Id");
+           ViewData["DepartId"] = new SelectList(_context.Departments, "Id", "Name");
             return Page();
         }
 

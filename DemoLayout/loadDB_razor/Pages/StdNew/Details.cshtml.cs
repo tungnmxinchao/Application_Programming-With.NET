@@ -18,7 +18,7 @@ namespace loadDB_razor.Pages.StdNew
             _context = context;
         }
 
-      public Student Student { get; set; } = default!; 
+        public Student Student { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,12 +27,16 @@ namespace loadDB_razor.Pages.StdNew
                 return NotFound();
             }
 
-            var student = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
+            //var student = await _context.Students.FirstOrDefaultAsync(m => m.Id == id);
+
+            var student = await _context.Students
+                .Include(s => s.Depart)  
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Student = student;
             }

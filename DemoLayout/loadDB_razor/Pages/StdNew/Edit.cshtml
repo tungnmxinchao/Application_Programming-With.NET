@@ -20,19 +20,64 @@
                 <input asp-for="Student.Name" class="form-control" />
                 <span asp-validation-for="Student.Name" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            @* <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Student.Gender" /> @Html.DisplayNameFor(model => model.Student.Gender)
                 </label>
-            </div>
+            </div> *@
+
+            @* <div class="form-group">
+                <label asp-for="Student.Gender" class="control-label">Gender</label>
+                <div>
+                    <label>
+                        <input asp-for="Student.Gender" type="radio" value="true" /> Male
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input asp-for="Student.Gender" type="radio" value="false" /> Female
+                    </label>
+                </div>
+                <span asp-validation-for="Student.Gender" class="text-danger"></span>
+            </div> *@
+
+
             <div class="form-group">
+                <label asp-for="Student.Gender" class="control-label">Gender</label>
+                <select asp-for="Student.Gender" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="true">Male</option>
+                    <option value="false">Female</option>
+                </select>
+                <span asp-validation-for="Student.Gender" class="text-danger"></span>
+            </div>
+
+            @* <div class="form-group">
                 <label asp-for="Student.DepartId" class="control-label"></label>
                 <select asp-for="Student.DepartId" class="form-control" asp-items="ViewBag.DepartId"></select>
                 <span asp-validation-for="Student.DepartId" class="text-danger"></span>
+            </div> *@
+
+
+            <div class="form-group">
+                <label asp-for="Student.DepartId" class="control-label">Department</label>
+                <div>
+                    @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.DepartId)
+                    {
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" asp-for="Student.DepartId" value="@item.Value" /> @item.Text
+                            </label>
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="Student.DepartId" class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
                 <label asp-for="Student.Dob" class="control-label"></label>
-                <input asp-for="Student.Dob" class="form-control" />
+                <input asp-for="Student.Dob" type="date" class="form-control" />
                 <span asp-validation-for="Student.Dob" class="text-danger"></span>
             </div>
             <div class="form-group">
