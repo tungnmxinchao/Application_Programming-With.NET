@@ -8,6 +8,11 @@ namespace CrudWpf.Models
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public bool Gender { get; set; }
+
+        public string MaleCbxCheck
+        {
+            get => Gender ? "Male" : "Female";
+        }
         public string DepartId { get; set; } = null!;
         public DateTime? Dob { get; set; }
         public double Gpa { get; set; }

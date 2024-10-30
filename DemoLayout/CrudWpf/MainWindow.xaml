@@ -96,8 +96,7 @@
                 <WrapPanel Orientation="Horizontal" Margin="0,5">
                     <Label Content="Gender:" Width="50" VerticalAlignment="Center" />
                     <ComboBox x:Name="cmbGender" Width="100" VerticalAlignment="Center"
-                                ItemsSource="{Binding GenderOptions}" 
-                                SelectedItem="{Binding SelectedStudent.Gender, Mode=TwoWay}">
+                              SelectedValue= "{Binding ElementName=dgvDisplay, Path=SelectedItem.MaleCbxCheck, Mode=OneWay}">
                         <!-- Define ComboBox options in the DataContext (ViewModel or Code-behind) -->
                     </ComboBox>
                 </WrapPanel>

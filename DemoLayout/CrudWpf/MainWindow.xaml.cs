@@ -25,12 +25,19 @@ namespace CrudWpf
         {
             load();
             loadDepart();
+            loadGender();
             cbxSearchIn.ItemsSource = elements;
 
         
             cbxMaleFilter.ItemsSource = new List<string> { "All", "Male", "Female" };
             cbxMaleFilter.SelectedIndex = 0; 
         }
+
+        private void loadGender()
+        {
+            cmbGender.ItemsSource = new List<string> { "Male", "Female" };
+
+		}
 
         private void load()
         {
